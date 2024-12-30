@@ -29,7 +29,9 @@ jobs:
       - name: Build
         run: |
           wget --content-disposition http://ftp.de.debian.org/debian/pool/main/q/qemu/qemu-user-static_${{ env.ORIGIN_VERSION }}_amd64.deb
-          dpkg-deb -R qemu-user-static_*.deb releases
+          wget --content-disposition http://ftp.de.debian.org/debian/pool/main/q/qemu/qemu-user_${{ env.ORIGIN_VERSION }}_amd64.deb
+          dpkg-deb -x qemu-user-static_*.deb releases
+          dpkg-deb -x qemu-user_*.deb releases
           ./run.sh -t "${{ env.VERSION }}" -r "${{ env.GITHUB_REPOSITORY }}" -d "${{ env.DOCKER_REPO }}"
       - name: Test
         run: ./test.sh -d "${{ env.DOCKER_REPO }}"

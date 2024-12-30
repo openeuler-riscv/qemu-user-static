@@ -52,6 +52,8 @@ do
             mkdir -p "${work_dir}"
             cp -p "${releases_dir}qemu-${to_arch}-static" ${work_dir}
             cp -p "${work_dir}/qemu-${to_arch}-static" "${out_dir}/latest/"
+            cp -p "${releases_dir}qemu-${to_arch}" ${work_dir}
+            cp -p "${work_dir}/qemu-${to_arch}" "${out_dir}/latest/"
             cat > ${work_dir}/Dockerfile -<<EOF
 FROM scratch
 COPY qemu-${to_arch}-static /usr/bin/
