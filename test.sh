@@ -28,7 +28,7 @@ cat /proc/sys/fs/binfmt_misc/qemu-aarch64
 grep -q '^flags: F$' /proc/sys/fs/binfmt_misc/qemu-aarch64
 
 # It should output the result of "uname -m".
-docker pull arm64v8/ubuntu
+docker pull --platform linux/arm64 arm64v8/ubuntu
 docker run --rm -t arm64v8/ubuntu uname -m
 # It should install a package.
 docker build --rm -t "test/latest/ubuntu" -<<EOF
