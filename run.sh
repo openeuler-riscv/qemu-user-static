@@ -70,6 +70,6 @@ EOF
     fi
 done
 
-docker build -t ${DOCKER_REPO}:${TAG_VER} ${out_dir}/latest
-docker tag ${DOCKER_REPO}:${TAG_VER} ${DOCKER_REPO}:latest
-docker build -t ${DOCKER_REPO}:register ${out_dir}/register
+docker build -t ${REPO}:${TAG_VER} ${out_dir}/latest
+docker tag ${REPO}:${TAG_VER} ${REPO}:latest
+docker build -t ${REPO}:register ${out_dir}/register
