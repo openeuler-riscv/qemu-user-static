@@ -57,6 +57,7 @@ do
             cat > ${work_dir}/Dockerfile -<<EOF
 FROM scratch
 COPY qemu-${to_arch}-static /usr/bin/
+COPY qemu-${to_arch} /usr/bin/
 EOF
             docker build -t ${DOCKER_REPO}:$from_arch-$to_arch-${TAG_VER} ${work_dir}
             for target in  "${DOCKER_REPO}:$from_arch-$to_arch" \
