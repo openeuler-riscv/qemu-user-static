@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - upgrade_to_9.2 # TEST
     paths:
       - containers/**
       - .github/workflows/actions.yml
@@ -18,8 +19,8 @@ jobs:
   qemu-user-static:
     runs-on: ubuntu-latest
     env:
-      VERSION: 7.2.0-1
-      ORIGIN_VERSION: 7.2+dfsg-1~bpo11+2
+      VERSION: 9.2.0
+      ORIGIN_VERSION: 9.2.0+ds-3~bpo12+2
     steps:
       - uses: actions/checkout@v2
       - name: Set variables
