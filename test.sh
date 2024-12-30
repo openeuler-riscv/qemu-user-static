@@ -38,8 +38,8 @@ RUN apt-get update && \
 EOF
 
 # It should output the result of "uname -m".
-docker pull arm64v8/fedora
-docker run --rm -t arm64v8/fedora uname -m
+docker pull --platform linux/arm64 arm64v8/fedora
+docker run --platform linux/arm64 --rm -t arm64v8/fedora uname -m
 # It should install a package.
 # TODO: Comment out as it takes a time.
 # docker build --rm -t "test/latest/fedora" -<<EOF
@@ -53,7 +53,7 @@ docker run --rm -t arm64v8/fedora uname -m
 
 # It should register binfmt_misc entry with 'flags: '
 # by given no "-p yes" option.
-docker run --rm --privileged ${DOCKER_REPO}:register --reset
+docker run --platform linux/arm64 --rm --privileged ${DOCKER_REPO}:register --reset
 cat /proc/sys/fs/binfmt_misc/qemu-aarch64
 grep -q '^flags: $' /proc/sys/fs/binfmt_misc/qemu-aarch64
 
