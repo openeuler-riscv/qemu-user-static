@@ -18,6 +18,8 @@ on:
 jobs:
   qemu-user-static:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     env:
       VERSION: 9.2.0
       ORIGIN_VERSION: 9.2.0+ds-3~bpo12+2
