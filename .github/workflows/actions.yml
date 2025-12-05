@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - master
-      - upgrade_to_9.2 # TEST
+      - upgrade_to_10.0 # TEST
     paths:
       - containers/**
       - .github/workflows/actions.yml
@@ -21,8 +21,8 @@ jobs:
     permissions:
       contents: write
     env:
-      VERSION: 9.2.0
-      ORIGIN_VERSION: 9.2.0+ds-3~bpo12+2
+      VERSION: 10.0.6
+      ORIGIN_VERSION: 10.0.6+ds-0+deb13u2
     steps:
       - uses: actions/checkout@v2
       - name: Set variables
