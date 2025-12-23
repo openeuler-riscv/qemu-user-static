@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - master
-      - upgrade_to_10.0 # TEST
+      - upd_10.1.3 # TEST
     paths:
       - containers/**
       - .github/workflows/actions.yml
@@ -21,8 +21,8 @@ jobs:
     permissions:
       contents: write
     env:
-      VERSION: 10.0.6
-      ORIGIN_VERSION: 10.0.6+ds-0+deb13u2
+      VERSION: 10.1.3
+      ORIGIN_VERSION: 10.1.3+ds-1
     steps:
       - uses: actions/checkout@v2
       - name: Set variables
@@ -30,9 +30,9 @@ jobs:
           echo "DOCKER_REPO=docker.io/oerv/qemu-user-static" >> $GITHUB_ENV
       - name: Build
         run: |
-          wget --content-disposition http://ftp.de.debian.org/debian/pool/main/q/qemu/qemu-user-static_${{ env.ORIGIN_VERSION }}_amd64.deb
+          wget --content-disposition http://ftp.de.debian.org/debian/pool/main/q/qemu/qemu-user-binfmt_${{ env.ORIGIN_VERSION }}_amd64.deb
           wget --content-disposition http://ftp.de.debian.org/debian/pool/main/q/qemu/qemu-user_${{ env.ORIGIN_VERSION }}_amd64.deb
-          dpkg-deb -x qemu-user-static_*.deb releases
+          dpkg-deb -x qemu-user-binfmt_*.deb releases
           dpkg-deb -x qemu-user_*.deb releases
           ./run.sh -t "${{ env.VERSION }}" -r "${{ env.GITHUB_REPOSITORY }}" -d "${{ env.DOCKER_REPO }}"
 #      - name: Test
