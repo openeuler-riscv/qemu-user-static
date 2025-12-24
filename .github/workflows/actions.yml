@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - master
-      - upd_10.1.3 # TEST
+      - adapt_debian_pkging_changes # TEST
     paths:
       - containers/**
       - .github/workflows/actions.yml
@@ -49,8 +49,8 @@ jobs:
           name: "v${{ env.VERSION }}"
           tag: "v${{ env.VERSION }}"
           body: |
-            # `qemu-*-static` @ ${{ env.VERSION }}
-          artifacts: "releases/usr/bin/*.tar.gz,releases/usr/bin/qemu-*-static"
+            # `qemu-* (static)` @ ${{ env.VERSION }}
+          artifacts: "releases/usr/bin/*.tar.gz,releases/usr/bin/qemu-*"
           draft: false
           prerelease: false
           token: ${{ secrets.GITHUB_TOKEN }}
