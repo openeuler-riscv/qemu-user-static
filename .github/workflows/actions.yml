@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - master
-      - adapt_debian_pkging_changes # TEST
+      - upd_10.2.0 # TEST
     paths:
       - containers/**
       - .github/workflows/actions.yml
@@ -21,8 +21,8 @@ jobs:
     permissions:
       contents: write
     env:
-      VERSION: 10.1.3-3
-      ORIGIN_VERSION: 10.1.3+ds-1
+      VERSION: 10.2.0-1
+      ORIGIN_VERSION: 10.2.0+ds-1
     steps:
       - uses: actions/checkout@v2
       - name: Set variables
